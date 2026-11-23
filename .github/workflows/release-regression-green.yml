@@ -1,0 +1,17 @@
+# G6: a release regression run where every case passes - the passing side of Gate 4 (story 12201).
+# The same artifact name as G3, ReleaseRegression, which is what gives a run the regression role in FI;
+# only the committed report differs (20 of 20 pass, against G3's 18 of 20).
+name: Release Regression (green)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ReleaseRegression
+          path: fixtures/junit-release-regression-green.xml
